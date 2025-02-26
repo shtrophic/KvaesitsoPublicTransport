@@ -8,6 +8,7 @@ plugins {
 android {
     namespace = "xyz.sirphotch.kvaesitsoplugin.publictransport"
     compileSdk = 35
+    buildToolsVersion = "35.0.1"
 
     defaultConfig {
         applicationId = "xyz.sirphotch.kvaesitsoplugin.publictransport"

@@ -79,4 +79,6 @@
     <string name="max_departures">Number of departures</string>
     <string name="max_departures_summary">Maximum number of departures per stop to get</string>
     <string name="plugin_state_setup_required">No providers are enabled for public transport search</string>
+    <string name="provider_deutschebahn_short">DB</string>
+    <string name="provider_deutschebahn">Deutsche Bahn</string>
 </resources>

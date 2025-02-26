@@ -33,8 +33,10 @@ import xyz.sirphotch.kvaesitsoplugin.publictransport.providers.NetworkProviderFa
 import xyz.sirphotch.kvaesitsoplugin.publictransport.providers.Provider
 import java.io.IOException
 import java.time.Duration
+import java.time.Instant
 import java.time.ZoneId
 import java.time.ZonedDateTime
+import java.util.Date
 import kotlin.time.Duration.Companion.minutes
 
 import de.schildbach.pte.dto.Location as PteLocation
@@ -118,7 +120,7 @@ class PublicTransportProvider : LocationProvider(
                             runCatching {
                                 queryDepartures(
                                     it.id,
-                                    null,
+                                    Date.from(Instant.now()),
                                     maxDepartures,
                                     false
                                 ).stationDepartures.flatMap { it.departures }

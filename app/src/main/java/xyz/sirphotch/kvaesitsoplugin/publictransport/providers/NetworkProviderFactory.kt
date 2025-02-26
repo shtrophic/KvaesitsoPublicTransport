@@ -2,6 +2,7 @@ package xyz.sirphotch.kvaesitsoplugin.publictransport.providers
 
 import de.schildbach.pte.BayernProvider
 import de.schildbach.pte.BsvagProvider
+import de.schildbach.pte.DbProvider
 import de.schildbach.pte.DingProvider
 import de.schildbach.pte.DubProvider
 import de.schildbach.pte.EireannProvider
@@ -69,6 +70,7 @@ object NetworkProviderFactory {
                 Provider.Ns -> NsProvider()
                 Provider.Rt -> RtProvider()
                 Provider.Negentwee -> NegentweeProvider()
+                Provider.DeutscheBahn -> DbProvider()
             }
         }
 

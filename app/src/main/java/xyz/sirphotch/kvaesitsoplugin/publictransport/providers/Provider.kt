@@ -63,7 +63,8 @@ enum class Provider {
     Rt,
 
     // AbstractNetworkProvider
-    Negentwee;
+    Negentwee,
+    DeutscheBahn;
 
     fun localizedShortName(): Int = when (this) {
         Bayern -> R.string.provider_bayern_short
@@ -95,6 +96,7 @@ enum class Provider {
         Ns -> R.string.provider_ns_short
         Rt -> R.string.provider_rt_short
         Negentwee -> R.string.provider_negentwee_short
+        DeutscheBahn -> R.string.provider_deutschebahn_short
     }
 
     fun localizedName(): Int = when (this) {
@@ -127,10 +129,11 @@ enum class Provider {
         Sydney -> R.string.provider_sydney
         Wien -> R.string.provider_wien
         Negentwee -> R.string.provider_negentwee
+        DeutscheBahn -> R.string.provider_deutschebahn
     }
 
     fun region(): ProviderRegion = when (this) {
-        Bayern, Bsvag, Ding, Gvh, Kvv, Mvg, Mvv, Nvbw, Vgn, Vmv, Vrn, Vrr, Vvm, Vvo, Vvs, Vvv -> ProviderRegion.Germany
+        DeutscheBahn, Bayern, Bsvag, Ding, Gvh, Kvv, Mvg, Mvv, Nvbw, Vgn, Vmv, Vrn, Vrr, Vvm, Vvo, Vvs, Vvv -> ProviderRegion.Germany
         Dub -> ProviderRegion.UnitedArabEmirates
         Linz, Stv, Wien -> ProviderRegion.Austria
         Mersey -> ProviderRegion.UnitedKingdom
@@ -173,6 +176,7 @@ enum class Provider {
         Ns -> "https://www.ns.nl"
         Rt -> "https://www.railteam.eu"
         Negentwee -> "https://www.9292.nl"
+        DeutscheBahn -> "https://bahn.de"
     }
 
     fun icon(): Uri? = when (this) {
@@ -205,5 +209,6 @@ enum class Provider {
         Ns -> TODO()
         Rt -> TODO()
         Negentwee -> TODO()
+        DeutscheBahn -> TODO()
     }?.let { Uri.parse(it) }
 }

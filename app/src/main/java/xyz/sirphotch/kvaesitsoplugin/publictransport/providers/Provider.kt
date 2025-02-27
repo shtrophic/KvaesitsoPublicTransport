@@ -181,7 +181,7 @@ enum class Provider {
         Db -> "https://bahn.de"
     }
 
-    fun icon(): Uri? = when (this) {
+    fun drawable(): Int? = when (this) {
         Bayern -> R.drawable.network_bayern_logo
         Bsvag -> R.drawable.network_bsvag_logo
         Ding -> R.drawable.network_ding_logo
@@ -211,5 +211,8 @@ enum class Provider {
         Db -> R.drawable.network_db_logo
 
         Dub, Tlem, Eireann -> null
-    }?.let { "android.resource://${BuildConfig.APPLICATION_ID}/$it".toUri() }
+    }
+
+    fun icon(): Uri? =
+        drawable()?.let { "android.resource://${BuildConfig.APPLICATION_ID}/$it".toUri() }
 }

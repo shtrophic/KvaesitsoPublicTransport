@@ -273,6 +273,6 @@ class PublicTransportProvider : LocationProvider(
                 ?: it.getString(localizedName())
         },
         url = url(),
-        iconUrl = null
+        iconUrl = icon()
     )
 }

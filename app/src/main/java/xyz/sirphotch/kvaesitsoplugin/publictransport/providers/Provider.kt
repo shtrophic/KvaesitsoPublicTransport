@@ -1,7 +1,9 @@
 package xyz.sirphotch.kvaesitsoplugin.publictransport.providers
 
 import android.net.Uri
+import androidx.core.net.toUri
 import xyz.sirphotch.kvaesitsoplugin.publictransport.R
+import xyz.sirphotch.kvaesitsoplugin.publictransport.BuildConfig
 
 enum class ProviderRegion {
     Germany,
@@ -64,7 +66,7 @@ enum class Provider {
 
     // AbstractNetworkProvider
     Negentwee,
-    DeutscheBahn;
+    Db;
 
     fun localizedShortName(): Int = when (this) {
         Bayern -> R.string.provider_bayern_short
@@ -96,7 +98,7 @@ enum class Provider {
         Ns -> R.string.provider_ns_short
         Rt -> R.string.provider_rt_short
         Negentwee -> R.string.provider_negentwee_short
-        DeutscheBahn -> R.string.provider_deutschebahn_short
+        Db -> R.string.provider_deutschebahn_short
     }
 
     fun localizedName(): Int = when (this) {
@@ -129,11 +131,11 @@ enum class Provider {
         Sydney -> R.string.provider_sydney
         Wien -> R.string.provider_wien
         Negentwee -> R.string.provider_negentwee
-        DeutscheBahn -> R.string.provider_deutschebahn
+        Db -> R.string.provider_deutschebahn
     }
 
     fun region(): ProviderRegion = when (this) {
-        DeutscheBahn, Bayern, Bsvag, Ding, Gvh, Kvv, Mvg, Mvv, Nvbw, Vgn, Vmv, Vrn, Vrr, Vvm, Vvo, Vvs, Vvv -> ProviderRegion.Germany
+        Db, Bayern, Bsvag, Ding, Gvh, Kvv, Mvg, Mvv, Nvbw, Vgn, Vmv, Vrn, Vrr, Vvm, Vvo, Vvs, Vvv -> ProviderRegion.Germany
         Dub -> ProviderRegion.UnitedArabEmirates
         Linz, Stv, Wien -> ProviderRegion.Austria
         Mersey -> ProviderRegion.UnitedKingdom
@@ -176,39 +178,38 @@ enum class Provider {
         Ns -> "https://www.ns.nl"
         Rt -> "https://www.railteam.eu"
         Negentwee -> "https://www.9292.nl"
-        DeutscheBahn -> "https://bahn.de"
+        Db -> "https://bahn.de"
     }
 
     fun icon(): Uri? = when (this) {
-        Bayern -> TODO()
-        Bsvag -> TODO()
-        Ding -> TODO()
-        Dub -> TODO()
-        Gvh -> TODO()
-        Kvv -> TODO()
-        Linz -> TODO()
-        Mersey -> TODO()
-        Mvg -> TODO()
-        Mvv -> TODO()
-        Nvbw -> TODO()
-        RtaChicago -> TODO()
-        Stv -> TODO()
-        Sydney -> TODO()
-        Tlem -> TODO()
-        Vbl -> TODO()
-        Vgn -> TODO()
-        Vmv -> TODO()
-        Vrn -> TODO()
-        Vrr -> TODO()
-        Vvm -> TODO()
-        Vvo -> TODO()
-        Vvs -> TODO()
-        Vvv -> TODO()
-        Wien -> TODO()
-        Eireann -> TODO()
-        Ns -> TODO()
-        Rt -> TODO()
-        Negentwee -> TODO()
-        DeutscheBahn -> TODO()
-    }?.let { Uri.parse(it) }
+        Bayern -> R.drawable.network_bayern_logo
+        Bsvag -> R.drawable.network_bsvag_logo
+        Ding -> R.drawable.network_ding_logo
+        Gvh -> R.drawable.network_gvh_logo
+        Kvv -> R.drawable.network_kvv_logo
+        Linz -> R.drawable.network_linz_logo
+        Mersey -> R.drawable.network_mersey_logo
+        Mvg -> R.drawable.network_mvg_logo
+        Mvv -> R.drawable.network_mvv_logo
+        Nvbw -> R.drawable.network_nvbw_logo
+        RtaChicago -> R.drawable.network_rtachicago_logo
+        Stv -> R.drawable.network_stv_logo
+        Sydney -> R.drawable.network_sydney_logo
+        Vbl -> R.drawable.network_vbl_logo
+        Vgn -> R.drawable.network_vgn_logo
+        Vmv -> R.drawable.network_vmv_logo
+        Vrn -> R.drawable.network_vrn_logo
+        Vrr -> R.drawable.network_vrr_logo
+        Vvm -> R.drawable.network_vvm_logo
+        Vvo -> R.drawable.network_vvo_logo
+        Vvs -> R.drawable.network_vvs_logo
+        Vvv -> R.drawable.network_vvv_logo
+        Wien -> R.drawable.network_wien_logo
+        Ns -> R.drawable.network_ns_logo
+        Rt -> R.drawable.network_rt_logo
+        Negentwee -> R.drawable.network_negentwee_logo
+        Db -> R.drawable.network_db_logo
+
+        Dub, Tlem, Eireann -> null
+    }?.let { "android.resource://${BuildConfig.APPLICATION_ID}/$it".toUri() }
 }

@@ -70,7 +70,7 @@ object NetworkProviderFactory {
                 Provider.Ns -> NsProvider()
                 Provider.Rt -> RtProvider()
                 Provider.Negentwee -> NegentweeProvider()
-                Provider.DeutscheBahn -> DbProvider()
+                Provider.Db -> DbProvider()
             }
         }
 

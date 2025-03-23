@@ -121,7 +121,7 @@ class PublicTransportProvider : LocationProvider(
                                 queryDepartures(
                                     it.id,
                                     Date.from(Instant.now()),
-                                    maxDepartures,
+                                    0,
                                     false
                                 ).stationDepartures.flatMap { it.departures }
                             }.onFailure {
@@ -158,7 +158,7 @@ class PublicTransportProvider : LocationProvider(
                     queryDepartures(
                         id,
                         null,
-                        maxDepartures,
+                        0,
                         false
                     )
                 }

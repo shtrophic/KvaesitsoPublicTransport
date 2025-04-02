@@ -32,14 +32,12 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Slider
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -63,7 +61,6 @@ import xyz.sirphotch.kvaesitsoplugin.publictransport.data.Settings
 import xyz.sirphotch.kvaesitsoplugin.publictransport.data.dataStore
 import xyz.sirphotch.kvaesitsoplugin.publictransport.providers.Provider
 import xyz.sirphotch.kvaesitsoplugin.publictransport.ui.theme.KvaesitsoPublicTransportPluginTheme
-import kotlin.math.roundToInt
 
 class SettingsActivity : ComponentActivity() {
 

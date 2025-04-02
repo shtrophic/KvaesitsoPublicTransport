@@ -46,7 +46,7 @@
             android:value="@string/plugin_description" />
         <meta-data
             android:name="de.mm20.launcher2.plugin.author"
-            android:value="github.com/Sir-Photch" />
+            android:value="https://liebender.dev" />
     </application>
 
 </manifest>

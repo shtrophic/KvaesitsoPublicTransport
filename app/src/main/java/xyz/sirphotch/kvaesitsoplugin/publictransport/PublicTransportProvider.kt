@@ -33,10 +33,8 @@ import xyz.sirphotch.kvaesitsoplugin.publictransport.providers.NetworkProviderFa
 import xyz.sirphotch.kvaesitsoplugin.publictransport.providers.Provider
 import java.io.IOException
 import java.time.Duration
-import java.time.Instant
 import java.time.ZoneId
 import java.time.ZonedDateTime
-import java.util.Date
 import kotlin.time.Duration.Companion.minutes
 
 import de.schildbach.pte.dto.Location as PteLocation
@@ -73,11 +71,9 @@ class PublicTransportProvider : LocationProvider(
             return emptyList()
 
         return withContext(Dispatchers.IO) {
-            val (enabledProviders, maxDepartures) =
-                settings.map { it.enabledProviders to it.maxDepartures }
-                    .firstOrNull() ?: return@withContext emptyList()
-
-            enabledProviders ?: return@withContext emptyList()
+            val enabledProviders = settings
+                .map { it.enabledProviders }
+                .firstOrNull() ?: return@withContext emptyList()
 
             fun NetworkProvider.nearbyLocations(): List<PteLocation> =
                 runCatching {
@@ -95,7 +91,7 @@ class PublicTransportProvider : LocationProvider(
                         it.name?.contains(query.query, ignoreCase = true) ?: false
                     }
                 }.onFailure {
-                    Log.e("Sir-Photch", "${id().name}: queryNearbyLocations", it)
+                    Log.e("shtrophic", "${id().name}: queryNearbyLocations", it)
                 }.getOrDefault(emptyList())
 
             fun NetworkProvider.suggest(): List<PteLocation> =
@@ -104,7 +100,7 @@ class PublicTransportProvider : LocationProvider(
                         it.distanceTo(query.userLatitude, query.userLongitude) < query.searchRadius
                     }
                 }.onFailure {
-                    Log.e("Sir-Photch", "${id().name} suggestLocations", it)
+                    Log.e("shtrophic", "${id().name} suggestLocations", it)
                 }.getOrDefault(emptyList())
 
 
@@ -120,12 +116,12 @@ class PublicTransportProvider : LocationProvider(
                             runCatching {
                                 queryDepartures(
                                     it.id,
-                                    Date.from(Instant.now()),
+                                    null,
                                     0,
                                     false
                                 ).stationDepartures.flatMap { it.departures }
                             }.onFailure {
-                                Log.e("Sir-Photch", "${id().name} queryDepartures", it)
+                                Log.e("shtrophic", "${id().name} queryDepartures", it)
                             }.getOrDefault(emptyList())
                         }.mapNotNull { it.toLauncherLocation(id) }
                     }
@@ -142,11 +138,9 @@ class PublicTransportProvider : LocationProvider(
         val provider =
             provStr.runCatching { Provider.valueOf(this) }.getOrNull() ?: return null
 
-        val (enabledProviders, maxDepartures) =
-            settings.map { it.enabledProviders to it.maxDepartures }
-                .firstOrNull() ?: return null
-
-        enabledProviders ?: return null
+        val enabledProviders = settings
+            .map { it.enabledProviders }
+            .firstOrNull() ?: return null
 
         if (!enabledProviders.contains(provider)) return null
 
@@ -163,7 +157,7 @@ class PublicTransportProvider : LocationProvider(
                     )
                 }
             } catch (ioe: IOException) {
-                Log.e("Sir-Photch", "${id().name} queryDepartures", ioe)
+                Log.e("shtrophic", "${id().name} queryDepartures", ioe)
                 return item
             }
 
@@ -177,13 +171,13 @@ class PublicTransportProvider : LocationProvider(
                 queryResult.stationDepartures.associate { it.location to it.departures }
 
             if (1 < refreshedPteLocations.size) {
-                Log.w("Sir-Photch", "${id().name} ignoring multiple results for refresh")
+                Log.w("shtrophic", "${id().name} ignoring multiple results for refresh")
             }
 
             val (loc, deps) =
                 refreshedPteLocations.entries.firstOrNull() ?: run {
                     Log.e(
-                        "Sir-Photch",
+                        "shtrophic",
                         "${id().name} no results on successful query; Header: ${queryResult.header}"
                     )
                     return item

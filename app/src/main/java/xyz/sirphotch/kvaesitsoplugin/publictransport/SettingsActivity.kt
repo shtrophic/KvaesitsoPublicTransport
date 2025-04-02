@@ -101,7 +101,6 @@ fun ProviderGroupColumn(
     modifier: Modifier = Modifier
 ) {
     val enabledProviders by settings.map { it.enabledProviders }.collectAsState(null)
-    val maxDepartures by settings.map { it.maxDepartures }.collectAsState(null)
 
     Column(modifier.background(MaterialTheme.colorScheme.surface)) {
         Spacer(
@@ -124,54 +123,6 @@ fun ProviderGroupColumn(
                     .navigationBarsPadding()
             ) {
                 Column(Modifier.verticalScroll(rememberScrollState())) {
-                    var sliderValue by remember(maxDepartures) {
-                        mutableFloatStateOf(
-                            maxDepartures?.toFloat() ?: 0.0f
-                        )
-                    }
-
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 12.dp)
-                    ) {
-                        Text(
-                            text = stringResource(R.string.max_departures),
-                            style = MaterialTheme.typography.headlineSmall,
-                        )
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Slider(
-                                value = sliderValue,
-                                onValueChange = { value ->
-                                    sliderValue = value
-                                    updateSettings {
-                                        it.copy(maxDepartures = value.roundToInt())
-                                    }
-                                },
-                                valueRange = 5f..20f,
-                                steps = 10,
-                                modifier = Modifier.fillMaxWidth(0.85f)
-                            )
-                            if (maxDepartures != null) {
-                                Text(
-                                    text = maxDepartures.toString(),
-                                    style = MaterialTheme.typography.labelLarge,
-                                )
-                            }
-                        }
-                        Text(
-                            modifier = Modifier.padding(start = 6.dp),
-                            text = stringResource(R.string.max_departures_summary),
-                            style = MaterialTheme.typography.labelSmall,
-                        )
-                    }
-
-                    HorizontalDivider(thickness = 2.dp)
-
                     for ((region, providers) in Provider.entries.groupBy { it.region() }) {
                         var showRegionProviders by remember { mutableStateOf(false) }
                         Row(

@@ -40,8 +40,6 @@
     <string name="provider_vmv_short">VMV</string>
     <string name="provider_vvv_short">VVV</string>
     <string name="provider_vrn_short">VRN</string>
-    <string name="max_departures">Zahl an Abfahrten</string>
-    <string name="max_departures_summary">Maximalzahl an Abfahrten pro Haltestelle</string>
     <string name="provider_kvv">Karlsruhe</string>
     <string name="provider_mersey">Liverpool</string>
     <string name="provider_rta_chicago">Chicago</string>

@@ -12,13 +12,12 @@ import xyz.sirphotch.kvaesitsoplugin.publictransport.providers.Provider
 import java.io.InputStream
 import java.io.OutputStream
 
-private const val SETTINGS_VERSION = 1
+private const val SETTINGS_VERSION = 2
 
 @Serializable
 data class Settings(
     val version: Int = SETTINGS_VERSION,
     val enabledProviders: Set<Provider>? = null,
-    val maxDepartures: Int = 7,
 )
 
 val Context.dataStore by dataStore("settings.json", SettingsSerializer)

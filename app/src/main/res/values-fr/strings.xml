@@ -1,2 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="plugin_description">Demander aux fournisseurs de transports publics pour connaître les départs près de vous</string>
+    <string name="location_setting_description">Recherche de départ de transports publics près de vous</string>
+    <string name="provider_kvv">Karlsruhe</string>
+    <string name="provider_mersey">Liverpool</string>
+    <string name="provider_mvg">Munich</string>
+    <string name="provider_rta_chicago">Chicago</string>
+    <string name="provider_vgn">Franconie centrale</string>
+    <string name="provider_vmv">Mecklembourg-Poméranie occidentale</string>
+    <string name="provider_vrn">Rhin-Neckar</string>
+    <string name="plugin_package_name">Transport Publique</string>
+    <string name="provider_bsvag">Brunswick</string>
+    <string name="provider_vbl">Lucerne</string>
+    <string name="provider_ding">Danube-Iller</string>
+    <string name="provider_gvh">Hanovre</string>
+    <string name="app_name">Kvaesitso Public Transport Plugin</string>
+    <string name="provider_dub">Dubai</string>
+    <string name="provider_nvbw">Baden-Wuerttemberg</string>
+    <string name="provider_tlem">Transport Sud-Ouest</string>
+    <string name="provider_mvv">Munich</string>
+</resources>

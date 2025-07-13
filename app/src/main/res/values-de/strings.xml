@@ -76,4 +76,8 @@
     <string name="provider_rt_short">RT</string>
     <string name="plugin_state_setup_required">Es sind keine Anbieter zur Suche ausgewählt</string>
     <string name="provider_deutschebahn">Deutsche Bahn</string>
+    <string name="provider_deutschebahn_short">DB</string>
+    <string name="provider_sydney_short">" "</string>
+    <string name="provider_wien_short">" "</string>
+    <string name="provider_negentwee_short">" "</string>
 </resources>
